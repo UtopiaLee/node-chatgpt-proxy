@@ -28,8 +28,8 @@ app.post('/backend-api/conversation', async function (req, res) {
         }
     }).then(result => {
         if (result?.error) {
+            res.status(result.error.statusCode);
             res.send(result)
-            res.status(result.error.statusCode).end();
         }
     }).catch(err => {
         console.log(err)
@@ -51,7 +51,21 @@ app.all("/*", async (req, res) => {
     }
     let response = await sendRequestNormal(uri, req.method, body, newHeaders)
     // res.set('Content-Type', 'application/json');
-    res.status(response.status)
+    console.log(response);
+    // if(null==response.status|| undefined==response.status)
+    // {
+    //     res.status(200)
+    // }
+    // else
+    // {
+    // res.status(response.status)
+    // }
+    try{
+        res.status(response.status)
+    }catch(e)
+    {
+       res.status(200);
+    }
     res.send(response)
 })
 global.lock = 0;
