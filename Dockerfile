@@ -22,7 +22,7 @@ RUN echo $JSON_STR > config.json
 
 ADD conf/ /
 
-EXPOSE 80
+EXPOSE 3000
 
 ENTRYPOINT ["/bin/bash", "/entrypoint.sh"]
 
