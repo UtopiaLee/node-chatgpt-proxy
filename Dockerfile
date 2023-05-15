@@ -26,5 +26,5 @@ EXPOSE 3000
 
 ENTRYPOINT ["/bin/bash", "/entrypoint.sh"]
 
-CMD ["nohup /usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf &"]
+CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf &"]
 
